@@ -59,17 +59,19 @@ function deepEqual(objA, objB)
     /*Проверка идентичности свойств*/
     for(let key in objA){
         if(key in objB){
+            countA++;
         }
         else return false;
-        countA++;
+
     };
     //console.log(countA);
 
     for(let key in objB){
-       if(key in objA){
+       if((key in objA)){
+           countB++;
         }
         else return false;
-        countB++;
+
     };
     //console.log(countB);
     /*Проверка идентичности значения свойств*/
@@ -93,7 +95,7 @@ function deepEqual(objA, objB)
         };
 
     };
-    console.log(objA.constructor.name +' = ' + objB.constructor.name + '. Количество свойств :' + countValue);
+    //console.log(objA.constructor.name +' = ' + objB.constructor.name + '. Количество свойств :' + countValue);
     if(countValue == countB) {
         return true;
     };
