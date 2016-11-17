@@ -33,7 +33,7 @@ var objB = {
 
     prop2: 'value2',
 
-    prop6: new Date(2016, 2, 10), //new Date('2016/02/10'),
+    prop6: new Date('2016/03/10'),
     prop4: {
 
         subProp2: {
@@ -50,44 +50,41 @@ var objB = {
     prop7 : [1,2,3]
 
 };
+function CheckProperties(objA, objB ){
+    var count = 0;
+    for(let key in objA){
+        if(key in objB){
+            count++;
+        }
+        else return 0;
 
+    };
+    return count;
+}
 function deepEqual(objA, objB)
 {
     var countA = 0,
         countB = 0,
         countValue = 0;
     /*Проверка идентичности свойств*/
-    for(let key in objA){
-        if(key in objB){
-            countA++;
-        }
-        else return false;
-
-    };
-    //console.log(countA);
-
-    for(let key in objB){
-       if((key in objA)){
-           countB++;
-        }
-        else return false;
-
-    };
+    countA =  CheckProperties(objA, objB);
+        //console.log(countA);
+    countB =  CheckProperties(objB, objA);
     //console.log(countB);
     /*Проверка идентичности значения свойств*/
     if(countA == countB){
         for(let key in objA){
-            if(typeof objA[key] === 'string' || typeof objA[key] === 'boolean' || typeof objA[key] === 'number' || typeof objA[key] ===  'undefined'  ) {
+            if(typeof objA[key] === 'string' || typeof objA[key] === 'boolean' || (typeof objA[key] === 'number' && !isNaN(objA[key])) || typeof objA[key] ===  'undefined'  ) {
                 if (objA[key] === objB[key]) {
                     countValue++;
                 }
             }
             else if(objA[key] instanceof Date ){
-               if(+objA[key].valueOf() == +objB[key].valueOf()) {
+               if(objA[key].getTime() == objB[key].getTime()) {
                            countValue++;
                }
             }
-            else if((objA[key] instanceof Array) || (objA[key] instanceof Object)  ){
+            else if((Array.isArray(objA[key])) || (objA[key] instanceof Object)){
                 if(deepEqual(objA[key], objB[key]))
                     countValue++;
             }
@@ -103,6 +100,8 @@ function deepEqual(objA, objB)
 };
 
 console.log(deepEqual(objA, objB));
+
+
 
 
 
