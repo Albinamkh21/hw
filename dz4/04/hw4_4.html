@@ -1,0 +1,66 @@
+﻿<html>
+<head>
+
+</head>
+<body>
+<div id = container>
+    <div id = div1 >Первый див</div>
+    <div id = div2 >Вторй див</div>
+    <a href = / id = a1>Первая ссылка </a>
+</div>
+</br></br>
+<div id = container2>Второй контейнер
+    <div id = "div3" class="red selected" >Третий  див  </div> text2
+    <div id = "div4" class = 'classDiv' >Четвертый див</div>text3
+    <a id = "a2" class="classA red selected" >Вторая ссылка <p></p> </a>text4
+
+</div>
+
+
+</body>
+</html>
+<script>
+    /*scanDOM*/
+    var  domCollection = {};
+   // var classCollection = {};
+    function scanDOM(parentNode,domCollection) {
+        var elms = {},
+            cls = {};
+        var children  = parentNode.childNodes;
+        for(var item of children){
+           if(item.nodeType == 3){
+               if(!domCollection.hasOwnProperty('textNodes')){
+                   domCollection['textNodes'] = 1;
+               }
+                else
+                     domCollection['textNodes'] += 1;
+            }
+            else if(item.nodeType == 1){
+               // console.log(item.nodeName);
+                if(!domCollection.hasOwnProperty(item.tagName)){
+                    elms = document.getElementsByTagName(item.tagName);
+                    domCollection[item.nodeName] = elms.length;
+
+
+                };
+               cls = item.classList;
+               for(var cl of cls){
+                   if(!domCollection.hasOwnProperty(cl)){
+                       cls = document.getElementsByClassName(cl);
+                       domCollection[cl] = cls.length;
+                   }
+               }
+               scanDOM(item,domCollection);
+            }
+        }
+        return domCollection;
+
+    };
+
+
+
+
+
+
+
+</script>
