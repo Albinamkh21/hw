@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="main.css">
+    <meta charset="UTF-8">
+    <title>Accordeon</title>
+</head>
+
+<body>
+
+<div class="menuWrapper">
+    <div class="menuItem open">
+        <div class="menuItemHeader">  Основы языка</div>
+        <div class="menuItemContent">
+           <ul>
+               <li>Лексическая структура</li>
+               <li>Типы данных</li>
+               <li>Выражения, операторы, инстукции</li>
+           </ul>
+        </div>
+    </div>
+
+    <div class="menuItem close">
+        <div class="menuItemHeader"> Функции </div>
+        <div class="menuItemContent">
+            <ul>
+                <li>Что это </li>
+                <li> Типы вызовов</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="menuItem close">
+        <div class="menuItemHeader">  Обработка ошибок и отладка </div>
+            <div class="menuItemContent">
+            <ul>
+                <li>Что это </li>
+                <li> Отладчики</li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuItem close">
+        <div class="menuItemHeader">  Объекты и массивы</div>
+        <div class="menuItemContent">
+            <ul>
+                <li>Созадание объекта </li>
+                <li> Применение</li>
+                <li> Свойства и методы</li>
+            </ul>
+        </div>
+    </div>
+    <div class="menuItem close">
+        <div class="menuItemHeader">  ДОМ </div>
+        <div class="menuItemContent">
+            <ul>
+            <li>Массивы </li>
+            <li> Методы работы</li>
+            <li> Array like </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script >
+
+    var container = document.getElementsByClassName('menuWrapper')[0];
+    container.addEventListener('click',toggleItem,false);
+
+    var itemHeaders = document.getElementsByClassName('menuItemHeader');
+    for (var i = 0; i < itemHeaders.length; i++) {
+        //itemHeaders[i].addEventListener('click', toggleItem, false);
+        if((i+1)%2 == 0)
+            itemHeaders[i].className = "menuItemHeader even";
+        else
+            itemHeaders[i].className = "menuItemHeader odd";
+    }
+    function toggleItem(e) {
+        var target   = e.target;
+        console.log(target);
+        if(!target.classList.contains('menuItemHeader')) return;
+        var parentNode = target.parentNode;
+        if(parentNode.classList.contains('open')){
+
+            parentNode.classList.add('close');
+            parentNode.classList.remove('open');
+        }
+        else {
+
+            var items = document.getElementsByClassName('menuItem');
+            for(var item of items) {
+                item.classList.add('close');
+                item.classList.remove('open');
+            }
+            parentNode.classList.add('open');
+            parentNode.classList.remove('close');
+        }
+
+    }
+
+
+</script>
