@@ -15,27 +15,21 @@ list.addEventListener('click', function (e) {
         var date = new Date(0);
         document.cookie = cookieName+"=; path=/; expires=" + date.toUTCString();
         writeTable();
-
     }
-
 });
 function getCookie() {
     var cookies = {};
     var ca = document.cookie.split(';');
-    console.log(document.cookie);
-    console.log(ca);
     var table = '',
         row = ''    ;
     for(var i = 0; i < ca.length; i++) {
         var pos=ca[i].indexOf('=');
         cookies[ca[i].substr(0,pos).trim()] = ca[i].substr(pos+1,ca[i].length).trim();
     }
-    console.log(cookies);
     return cookies;
 }
 function writeTable(){
     var cookies =  getCookie();
-    console.log(Object.keys(cookies).length);
     if(!Object.keys(cookies).length){
         list.innerHTML = '';
         return false;
