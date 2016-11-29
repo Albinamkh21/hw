@@ -1,3 +1,4 @@
+
 var url = 'https://raw.githubusercontent.com/smelukov/citiesTest/master/cities.json';
 var citiesArr =[],
     sorted = [];
@@ -39,7 +40,7 @@ input.addEventListener('click', function (e) {
 })
 input.addEventListener('keyup', function(e){
     console.log(input.value);
-    if(!input.value) return;
+    //if(!input.value) return;
     sorted =   citiesArr.filter(function (value) {
          if(value.toLowerCase().indexOf(input.value.toLowerCase()) != -1) return true;
     });
