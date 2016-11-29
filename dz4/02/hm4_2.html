@@ -1,0 +1,42 @@
+<html>
+<head>
+
+</head>
+<body>
+<div id = container>
+    <div id = div1 >Первый див</div>
+    <div id = div2 >Вторй див</div>
+    <a href = / id = a1>Первая ссылка </a>
+</div>
+</br></br>
+<div id = container2>Второй контейнер
+    <div id = div3 >Третий  див  </div> text2
+    <div id = div4 >Четвертый див</div>text3
+    <a href = / id = a2>Вторая ссылка </a>text4
+
+</div>
+
+
+</body>
+</html>
+<script>
+    /*prepend*/
+    function deleteTextNodes(el) {
+        var count = 0;
+        var childNodes =  el.childNodes;
+        for(var item of childNodes){
+            if(item.nodeType == 3){
+                el.removeChild(item);
+                count++;
+            }
+
+        }
+        return count;
+
+    };
+    var container = document.getElementById('container2');
+    deleteTextNodes(container);
+
+
+
+</script>

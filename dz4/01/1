@@ -1,0 +1,93 @@
+<html>
+<head>
+
+</head>
+<body>
+    <div id = container>
+        <div id = div1 >Первый див</div>
+        <div id = div2 >Вторй див</div>
+        <a href = / id = a1>Первая ссылка </a>
+    </div>
+    </br></br>
+    <div id = container2>Второй контейнер
+        <div id = div3 >Третий  див</br>
+            <a  id =div2a1>div2a1 </a> текст1</br>
+            <a  id =div2a2>div2a2 </a> текст2</br>
+                <p>Текст3 в параграфе в ссылке 2 дива 2</p>текст4
+            </a> текст5
+        </div>
+        <div id = div4 >Четвертый див</div>
+        <a href = / id = a2>Вторая ссылка </a>
+
+    </div>
+    </br></br>
+    <div id = container3>Третий контейнер</br>
+        <div id = div5 >Третий  див</div>ddd</br>
+        <div id = div6 >Четвертый див</div>dddd</br>
+        <a href = / id = a3>Вторая ссылка  </a>ddddd</br>
+
+    </div>
+
+
+</body>
+</html>
+<script>
+    /*prepend*/
+    function prepend(el1, el2) {
+     var container = document.getElementById(el1);
+     var firstChild = container.firstElementChild;
+     var add = document.getElementById(el2);
+      container.insertBefore(add, firstChild);
+    }
+    //var container = document.getElementById('container');
+    //var div3 = document.getElementById('div3');
+    //prepend('container', 'div3');
+
+   /* Эта функция принимает на вход элемент и должна удалить все текстовые узлы внутри указанного элемента. */
+  function deleteTextNode(el){
+       //var el = document.getElementById(el);
+       var count  = 0;
+       var childNodes = el.childNodes;
+       for (let item of childNodes) {
+           if(item.nodeType == 3) {
+               //console.log(item.nodeValue);
+               el.removeChild(item);
+               count++;
+
+           }
+       }
+       return count;
+   }
+   //deleteTextNode('container3');
+
+
+    /* Эта функция принимает на вход элемент и должна удалить все текстовые узлы внутри указанного элемента рекурсивно. */
+    function deleteTextNodeRec(el){
+        //var el = document.getElementById(el);
+        var count  = 0;
+        console.log(el);
+        var childNodes = el.childNodes;
+        console.log(childNodes);
+        var res = 0,
+            item  = [];
+        //for (var item of childNodes) {
+        for(var i = 0; i < childNodes.length; i++){
+            item = childNodes[i];
+            console.log(`${item.id} - ${item.nodeType} `);
+            if(item.nodeType == 3) {
+                //console.log(item.nodeValue);
+                res = el.removeChild(item);
+                i--;
+                count++;
+            } else if(item.nodeType == 1 && item.childNodes.length>0){
+
+                console.log(`${item.id} - ${item.nodeType}; length - ${item.children.length}`);
+                 deleteTextNodeRec(item);
+            }
+        }
+        return res;
+    }
+    //var el = document.getElementById('container3')
+    //deleteTextNode(el);
+
+</script>

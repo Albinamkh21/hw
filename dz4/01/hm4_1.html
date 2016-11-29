@@ -1,0 +1,35 @@
+<html>
+<head>
+
+</head>
+<body>
+    <div id = container>
+        <div id = div1 >Первый див</div>
+        <div id = div2 >Вторй див</div>
+        <a href = / id = a1>Первая ссылка </a>
+    </div>
+    </br></br>
+    <div id = container2>Второй контейнер
+        <div id = div3 >Третий  див
+        </div>
+        <div id = div4 >Четвертый див</div>
+        <a href = / id = a2>Вторая ссылка </a>
+
+    </div>
+
+
+</body>
+</html>
+<script>
+    /*prepend*/
+    function prepend(el1, el2) {
+     var firstChild = el1.firstElementChild;
+     container.insertBefore(el2, firstChild);
+    }
+    var container = document.getElementById('container');
+    var div3 = document.getElementById('div3');
+    prepend(container, div3);
+
+
+
+</script>

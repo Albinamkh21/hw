@@ -1,0 +1,55 @@
+
+<html>
+<head>
+
+</head>
+<body>
+<div id = container>
+    <div id = div1 >Первый див</div>
+    <div id = div2 >Вторй див</div>
+    <a href = / id = a1>Первая ссылка </a>
+</div>
+</br></br>
+<div id = container2>Второй контейнер
+    <div id = div3 >Третий  див
+        <a  id = div3a1>div3a1 ссылка </a> text31
+        <a  id = div3a2>div3a2 ссылка </a>text32
+    </div> text2
+    <div id = div4 >Четвертый див</div>text3
+    <a href = / id = a2>Вторая ссылка </a>text4
+
+</div>
+
+
+</body>
+</html>
+<script>
+ /*  ДЗ - 3(не обязательно)
+    Реализовать функцию, описанную в ДЗ-2, рекурсивно
+ */
+
+    function deleteTextNodesRec(el) {
+        var count = 0,
+            item = [];
+        var childNodes =  el.childNodes;
+        for(var i = 0; i < childNodes.length; i++){
+            item = childNodes[i];
+            if(item.nodeType == 3){
+                el.removeChild(item);
+                i--;
+                count++;
+            }
+            else if(item.nodeType == 1 && item.childNodes.length){
+                deleteTextNodesRec(item);
+            }
+
+        }
+        return count;
+
+    };
+    var container = document.getElementById('container2');
+    deleteTextNodesRec(container);
+
+
+
+</script>
