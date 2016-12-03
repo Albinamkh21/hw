@@ -1,0 +1,25 @@
+#container {
+    position: relative;
+    margin: 10px;
+
+}
+#city {
+    height: 25px;
+    width: 200px;
+}
+#list {
+    position: absolute;
+    top: 35px;
+    left: 0px;
+    width: 200px;
+
+}
+
+#list .close {
+    display: none;
+
+}
+
+#list .open {
+    display: block;
+}
