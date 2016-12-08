@@ -1,0 +1,70 @@
+.parent {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: auto;
+}
+#container {
+    width: 810px;
+    height: 600px;
+    position: absolute;
+    top:  50%;
+    left: 50%;
+    margin: -400px 0 0 -400px;
+    padding: 0px;
+    border: solid 1px;
+
+
+}
+#containerMainList {
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+#containerSelectedList {
+    width: 400px;
+    height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.list-group {
+    height: 420px;
+}
+.bottom
+{
+    width: 100%;
+    text-align: right;
+    border-top: solid 1px;
+    height: 50px;
+}
+.header
+ {
+    height: 50px;
+    border-bottom: solid 1px;
+    padding: 10px 0 0 15px;
+
+}
+.search {
+    position: relative;
+}
+.glyphicon-search
+{
+    position: absolute;
+    left: 12px;
+    top:16px;
+
+}
+#searchfriendsList, #searchfriendsSelectedList
+{
+    width: 340px;
+    margin: 10px;
+
+}
+.search input {
+    text-indent: 20px;
+
+}
