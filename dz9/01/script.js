@@ -57,11 +57,12 @@ btnSave.addEventListener('click', function (e) {
     new Promise(function(resolve) {
         db.transaction(function(tx) {
 
-                tx.executeSql('delete from friendsMain');
-                tx.executeSql('delete from friendsSelected');
+           tx.executeSql('delete from friendsMain');
+           tx.executeSql('delete from friendsSelected');
+            resolve();
 
         });
-        resolve();
+
 
     }).then(function() {
         var friendsList = document.getElementById('friendsList');
@@ -248,7 +249,7 @@ searchfriendsSelectedList.addEventListener('keyup', function(e){
 function filterList(ulId, e) {
     var target = e.target;
     var ul = document.getElementById(ulId); console.log(ul);
-    var arr =ul.querySelectorAll('li');
+    var arr = ul.querySelectorAll('li');
     var friendsArr = [],
         friends = {};
     for (var item of arr ){
