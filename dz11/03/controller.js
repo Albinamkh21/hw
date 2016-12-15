@@ -20,10 +20,16 @@ var Controller = {
         });
     },
     photosRoute: function() {
-        
-        return Model.getPhotos().then(function(photos) {
-            results.innerHTML = View.render('photos', {list: photos});
-        }).then(function () {
+
+        Model.getPhotos();
+        /* return Model.getPhotos().then(function(photos) {
+            console.log('Прошли альбом');
+            console.log(photos);
+            results.innerHTML = View.render('photos', {list: photos[0]});
+
+        })
+*/
+        /*.then(function () {
 
 
               var photosWithComment = document.querySelectorAll('div#divCommentsCount');
@@ -52,7 +58,7 @@ var Controller = {
           });
 
 
-
+*/
 
     },
 

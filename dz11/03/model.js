@@ -42,18 +42,19 @@ var Model = {
     getGroups: function() {
         return this.callApi('groups.get', {  fields: 'photo_50, name' , count: 20 , extended : 1});
     },
-    getPhotos: function(albums) {
+    getPhotos: function() {
         unitDB(db).then(function () {  console.log('unitDB was done');});
-        //albums = [212992529, 185168883];
-        return this.callApi('photos.getAlbums', {})
+        //albumsIds = [212992529, 185168883];
+       return this.callApi('photos.getAlbums', {})
         .then(function (albums) {
             var albumsIds = [];
             for (var item of albums) {
                 albumsIds.push(item.aid);
-            }
-            return GetDataByAlbum(albumsIds, 0);
-
+            };
+           // albumsIds = [212992529, 185168883];
+           return GetDataByAlbum(albumsIds, 0);
         });
+
     },
     getComments: function (pid) {
       pid = parseInt(pid);
@@ -153,9 +154,9 @@ function GetDataByAlbum(albums, i) {
 
 
         }
-     return Model.callApi('photos.get', { album_id : curAid,   extended : 1})
+       Model.callApi('photos.get', { album_id : curAid,   extended : 1})
     .then(function (photos) {
-        console.log('Получили Фото по альбомам');
+        console.log('Получили Фото по альбому ' + curAid);
         var photoToDB = [];
         for (var item of photos) {
 
@@ -169,14 +170,18 @@ function GetDataByAlbum(albums, i) {
         return GetCommentsFromVK(curAid);
     }).then(function () {
             console.log('Сохранили все - фоты, каменты, юзеров по альбому ' + curAid);
-             return new Promise(function(resolve, reject) {
+             setTimeout(GetDataByAlbum(albums, i+1), 1000);
+         /*  return new Promise(function(resolve, reject) {
+                 setTimeout(GetDataByAlbum(albums, i+1));
                  db.transaction(function (tx) {
                      tx.executeSql('SELECT pid, src, text, commentsCount,likesCount, repostsCount FROM photos where aid = ? ', [curAid], function (tx, res) {
-                       
+                       // return res.rows;
                          resolve(res.rows);
                      });
                  });
 
              });
+             */
+
     });
-}
+};
