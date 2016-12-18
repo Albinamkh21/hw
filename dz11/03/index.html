@@ -99,9 +99,9 @@
       <div class="col-sm-2">
           <div><img src="{{src}}" ></div>
           <div >
-              {{#if text}}<div  style="text-align:center" id = "divCommentsCount"  data-pid = {{pid}} data-comments ={{commentsCount}}> Comments {{commentsCount}}</div>{{/if}}
-              {{#if text}}<div  style="text-align:center "> Likes {{likesCount}}</div>{{/if}}
-              {{#if text}}<div style="text-align:center "> Reposts  {{repostsCount}}</div>{{/if}}
+              <div  style="text-align:center; display:none" id = "divCommentsCount"  data-pid = {{pid}} data-comments ={{commentsCount}}> Comments {{commentsCount}}</div>
+              {{#if likesCount}}<div  style="text-align:center "> Likes {{likesCount}}</div>{{/if}}
+              {{#if repostsCount}}<div style="text-align:center "> Reposts  {{repostsCount}}</div>{{/if}}
 
           </div>
 
@@ -120,7 +120,7 @@
 
 <script type="text/x-handlebars-template" id="commentsTemplate">
       {{#each list}}
-        <div class=""  id = {{id}} >
+        <div class="row"  id = {{id}} >
             <div class="col-sm-6">
                 <img src="{{url}}" class="img-circle"> {{name}}
             </div>
