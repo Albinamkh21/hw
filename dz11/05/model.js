@@ -191,12 +191,14 @@ function UpdatePhotos(){
         });
      });
 };
-
-
 function unitDB(db) {
 
     return new Promise(function (resolve) {
         db.transaction(function (tx) {
+            tx.executeSql('drop table if exists   photos');
+            tx.executeSql('drop table if exists   comments');
+            tx.executeSql('drop table if exists   users');
+            tx.executeSql('drop table if exists   albums');
             tx.executeSql('CREATE TABLE IF NOT EXISTS photos (pid,aid, src, text, commentsCount,likesCount, repostsCount, pdate)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS comments (id, pid,dt, commentText, from_id, date)');
             tx.executeSql('CREATE TABLE IF NOT EXISTS users (uid,name, url);');
