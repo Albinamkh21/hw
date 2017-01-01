@@ -1,0 +1,24 @@
+ input {
+     height: 35px;
+     width: 300px;
+     font-size: 30px;
+     padding-left: 10px;
+     border-radius:  20px 20px 20px 20px;
+     -moz-border-radius: 20px 20px 20px 20px;
+     -khtml-border-radius: 20px 20px 20px 20px;
+
+ }
+ .balloonHeader {
+      height: 30px;
+      font-size: 14px;
+
+      vertical-align: center;
+      border-bottom: solid 1px;
+ }
+ .ballon_header
+ {
+
+ }
+
+
+

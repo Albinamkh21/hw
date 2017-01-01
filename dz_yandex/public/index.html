@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Yandex</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script src="js/map.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+<div id="map" style="width: 800px; height: 600px"></div>
+
+<script type="text/x-handlebars-template" id="reviewTemplate">
+    <input id = "x" style="display:none" value = "{{x}}" />
+     <input id = "y" style="display:none" value  = "{{y}}"/>
+    <div id="reviewList" style="padding-left:20px;">
+        {{#each list}}
+        <div >
+            <div class="row">
+                <span class="col-sm-3">  <strong>{{userName}} </strong> </span> <span class="col-sm-3"> {{placeName}}</span> <span class="col-sm-1"> <small>{{date}}</small></span>
+
+
+            </div>
+            <div class="row">{{text}}</div>
+        </div>
+        {{/each}}
+
+    </div>
+    <hr>
+    <form class="form-search">
+        <div  id = "review">
+            <p class="text-warning" style="font-size : 20px"> Ваш отзыв </p>
+            <div class="">
+                 <input type= "text"   id="userName" placeholder="Ваше имя">
+            </div>
+            <br>
+            <div class="control-group">
+                <input type = "text"   id = "placeName"  placeholder = "Укажите место">
+            </div>
+            <br>
+            <div class="control-group">
+                <input type = "text"  id = "reviewText"  placeholder  = "Поделитесь впечатлениями">
+            </div>
+            <br>
+            <div>
+             <button class="btn"  style="align-self: right;" id = "btnSaveReview">Добавить</button>
+            </div>
+        </div>
+    </form>
+</script>
+</body>
+
+</html>
