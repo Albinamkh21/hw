@@ -67,7 +67,7 @@ function init(){
         console.log('кликнули на метку 22');
         var thisPlacemark = e.get('target');
         coords = thisPlacemark.geometry.getCoordinates();
-       var reviews = LoadReviewsFromServer(coords[0],  coords[1])
+        var reviews = LoadReviewsFromServer(coords[0],  coords[1])
            .then(function (reviews) {
                 console.log(reviews);
                 var balloonContent =  renderView("review", { list: reviews, x:coords[0], y : coords[1]});
@@ -154,9 +154,6 @@ function LoadPlacemrksFromServer(clusterer) {
     };
     loadList()
         .then(function(placemarks) {
-            //var placemarkList = document.querySelector('#list');
-            
-
             placemarks.forEach(function(item) {
                // var placemarkList = renderView("review", { data: placemarks, x: item.x, y :item.y });
                 var placemark = addPlacemark(clusterer, item.x, item.y,  '',  item.adress);
@@ -203,7 +200,6 @@ function LoadReviewsFromServer(x, y) {
     // })
 
  }
-
 
  /*Добавляем отзыв*/
  var btnSaveReview  =  document.getElementById('btnSaveReview');
